@@ -1,7 +1,6 @@
 #include <cstdlib>
 #include <iostream>
 #include <stdio.h>
-#include <Math.h>
 #include "Circle.h"
 using namespace std;
 

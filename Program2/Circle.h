@@ -6,7 +6,7 @@ struct location{
 };
 class Circle
 {
-    location Location;
+    location olocation;
     double radius;
     static int n;
     public:

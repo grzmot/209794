@@ -17,7 +17,6 @@ int main(int argc, char *argv[])
     delete nowy;
     delete nowy3;
     system("PAUSE");
-    return EXIT_SUCCESS;
 }
 /*Odpowiedzi na putania:
     Sposoby dziediczenia ró¿ni¹ siê od siebie zasiengiem tzn:

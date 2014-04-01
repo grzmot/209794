@@ -7,22 +7,25 @@ class Human
 {
     int wiek;
     char plec;
-    string imie, nazwisko;
+    string imie;
+    string nazwisko;
     int *tab;
-    static int licznik;
-    public:
-        Human();
-        Human(int w, char p, string i, string n, int *t);
-        int get_wiek();
-        char get_plec();
-        string get_imie();
-        string get_nazwisko();
-        void set_wiek(int w);
-        void set_plec(char p);
-        void set_imie(string i);
-        void set_nazwisko(string n); 
-        static int ilosc();
-        ~Human();
-    
+    static int couter;
+public:
+    Human();
+    Human(int wiek, char plec, string imie, string nazwisko, int size);
+    Human(string imie, string nazwisko);
+    ~Human();
+        
+    static int counter();
+       
+    int get_wiek();
+    char get_plec();
+    string get_imie();
+    string get_nazwisko();
+    void set_wiek(int w);
+    void set_plec(char p);
+    void set_imie(string i);
+    void set_nazwisko(string n); 
 };
 #endif

@@ -7,18 +7,15 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-    int *x,n=20;
-    x= new int[n];
     Student *nowy;
     Tutor *nowy2;
     Human *nowy3;
-    nowy=new Student(12,'M',"Maciej","Starosciak",x,123456,1,"lol","XXX");
-    nowy2=new Tutor(12,'M',"Maciej","Starosciak",x,"lol",32);
-    nowy3= new Human(12,'M',"Maciej","Starosciak",x);
+    nowy=new Student("Maciej","xxx",209794);
+    nowy2=new Tutor("Maciej","x","inz");
+    nowy3= new Human("Maciej","Starosciak");
     delete nowy2;
     delete nowy;
     delete nowy3;
-    delete []x;
     system("PAUSE");
     return EXIT_SUCCESS;
 }

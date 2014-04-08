@@ -8,28 +8,31 @@ int Human::counter()
 
 Human::Human()
 {
-    wiek=0;
+    age=0;
     plec='n';
-    imie="";
-    nazwisko="";
+    first_name="";
+    surname="";
     couter++;
-    favorite_books= new string[0];
+    size=0;
+    favorite_books= new string[size];
 }
-Human::Human(int wiek, char plec, string imie, string nazwisko, int size):
-    wiek(wiek),
+Human::Human(int age, char plec, string first_name, string surname, int size):
+    age(age),
     plec(plec),
-    imie(imie),
-    nazwisko(nazwisko),
+    first_name(first_name),
+    surname(surname),
     size(size)
 {
     favorite_books= new string[size];
     couter++;
 }
-Human::Human(string imie, string nazwisko):
-    imie(imie),nazwisko(nazwisko)
+Human::Human(string first_name, string surname, int size):
+    first_name(first_name),surname(surname),size(size)
 {
+    age=0;
+    plec='n';
     couter++;
-    favorite_books= new string[0];
+    favorite_books= new string[size];
 }
 Human::~Human()
 {
@@ -37,46 +40,64 @@ Human::~Human()
     delete []favorite_books;
 }
 
-int Human::get_wiek()
+int Human::get_age()
 {
-    return wiek;
+    return age;
 }
 char Human::get_plec()
 {
     return plec;
 }
-string Human::get_imie()
+string Human::get_first_name()
 {
-    return imie;
+    return first_name;
 }
-string Human::get_nazwisko()
+string Human::get_surname()
 {
-    return nazwisko;
+    return surname;
 }
-void Human::set_wiek(int w)
+void Human::set_age(int age)
 {
-    wiek=w;
+    this->age=age;
 }
-void Human::set_plec(char p)
+void Human::set_plec(char plec)
 {
-    plec=p;
+    this->plec=plec;
 }
-void Human::set_imie(string i)
+void Human::set_first_name(string first_name)
 {
-    imie=i;
+    this->first_name=first_name;
 }
-void Human::set_nazwisko(string n)
+void Human::set_surname(string surname)
 {
-    nazwisko=n;
+    this->surname=surname;
 }
 
 ostream& operator<< (ostream &output, Human const& human)
 {
-   output << "Imie: " << human.imie <<endl<< "Nazwisko: " << human.nazwisko << endl;
+   output << "Imie: " << human.first_name <<endl<< "Nazwisko: " << human.surname << endl<<"Wiek: "<< human.age<<endl<<"plec: "<<human.plec<<endl<<"ulubione ksiazki: ";
+   for(int i=0;i<human.size;i++)
+        output<<human.favorite_books[i]<<" ";
    return output;
 }
 istream& operator>> (istream &input, Human& human)
 {
-   input >> human.imie >> human.nazwisko;
+    cout<<"podaj Imie:";
+    input >> human.first_name;
+    cout<<"podaj Nazwisko: ";
+    input >> human.surname;
+    cout<<"podaj Wiek:";
+    input >> human.age;
+    cout<<"plec: ";
+    input>>human.plec;
+    cout<<"podaj ilosc Ulubionych Ksiazek:";
+   input >> human.size;
+   delete []human.favorite_books;
+   human.favorite_books= new string[human.size];
+   for(int i=0;i<human.size;i++)
+   {
+        cout <<"podaj ksiazke "<<i+1<<": ";
+        input >>human.favorite_books[i];
+   }
    return input;
 }

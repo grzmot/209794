@@ -2,17 +2,17 @@
 
 Tutor::Tutor():Human()
 {
-    tytul_naukowy="";
-    liczba_poblikacji=0;
+    academic_title="";
+    number_of_publications=0;
 }
-Tutor::Tutor(int wiek, char plec, string imie, string nazwisko, int size, string tytul_naukowy, int liczba_poblikacji):
-    Human(wiek,plec,imie,nazwisko,size),
-    tytul_naukowy(tytul_naukowy),
-    liczba_poblikacji(liczba_poblikacji)
+Tutor::Tutor(int age, char plec, string first_name, string surname, int size, string academic_title, int number_of_publications):
+    Human(age,plec,first_name,surname,size),
+    academic_title(academic_title),
+    number_of_publications(number_of_publications)
 {}
-Tutor::Tutor(string imie, string nazwisko, string tytul_naukowy):
-    Human(imie,nazwisko),
-    tytul_naukowy(tytul_naukowy)
+Tutor::Tutor(string first_name, string surname, int size, string academic_title):
+    Human(first_name,surname,size),
+    academic_title(academic_title)
 {}
 Tutor::~Tutor()
 {}
@@ -26,28 +26,32 @@ int Tutor::counter()
 
 void Tutor::set_tytul(string ztytul)
 {
-    tytul_naukowy=ztytul;
+    academic_title=ztytul;
 }
 void Tutor::set_liczba(int zpublikacje)
 {
-    liczba_poblikacji=zpublikacje;
+    number_of_publications=zpublikacje;
 }
 string Tutor::get_tytyl()
 {
-    return tytul_naukowy;
+    return academic_title;
 }
 int Tutor::get_liczba()
 {
-    return liczba_poblikacji;
+    return number_of_publications;
 }
 
 ostream& operator<< (ostream &output, Tutor const& tutor)
 {
-   output <<static_cast<const Human&>( tutor )<< "Tytul naukowy: " << tutor.tytul_naukowy <<endl;
+   output <<static_cast<const Human&>( tutor )<< "Tytul naukowy: " << tutor.academic_title <<endl<<"Liczba Publikacji:"<<tutor.number_of_publications<<endl;
    return output;
 }
 istream& operator>> (istream &input, Tutor& tutor)
 {
-   input >>static_cast<Human&>( tutor )>>tutor.tytul_naukowy;
+   input >>static_cast<Human&>( tutor );
+   cout<<"Tytul naukowy: ";
+   input>>tutor.academic_title;
+   cout<<"liczba publikacji: ";
+   input>>tutor.number_of_publications;
    return input;
 }

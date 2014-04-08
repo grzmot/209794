@@ -4,12 +4,12 @@
 
 class Tutor:protected Human
 {
-    string tytul_naukowy;
-    int liczba_poblikacji;
+    string academic_title;
+    int number_of_publications;
 public:
     Tutor();
-    Tutor(int wiek, char plec, string imie, string nazwisko, int size, string tytul_naukowy, int liczba_poblikacji);
-    Tutor(string imie, string nazwisko, string tytul_naukowy);
+    Tutor(int wiek, char plec, string imie, string surname, int size, string academic_title, int number_of_publications);
+    Tutor(string imie, string surname, int size, string academic_title);
     ~Tutor();
         
     static int counter();

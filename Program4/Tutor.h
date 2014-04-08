@@ -1,6 +1,7 @@
 #ifndef Tutor_h
 #define Tutor_h
 #include "Human.h"
+#include <string>
 
 class Tutor:protected Human
 {

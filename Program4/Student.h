@@ -1,6 +1,7 @@
 #ifndef Student_h
 #define Student_h
 #include "Human.h"
+#include <string>
 using namespace std;
 class Student : protected Human
 {

@@ -1,6 +1,7 @@
 #ifndef Student2_h
 #define Student2_h
 #include "Student.h"
+#include <string>
 using namespace std;
 class Student2 : protected Student
 {

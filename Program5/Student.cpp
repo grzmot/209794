@@ -10,8 +10,8 @@ Student::Student():Human()
     size=0;
     mark= new string[size];
 }
-Student::Student(int age, char plec, string first_name, string surname, int size_human, int numer_ind,int semestr, string direction,string department, int size):
-    Human(age,plec,first_name,surname,size_human),
+Student::Student(int age, char sex, string first_name, string surname, int size_human, int numer_ind,int semestr, string direction,string department, int size):
+    Human(age,sex,first_name,surname,size_human),
     numer_ind(numer_ind),
     semestr(semestr),
     direction(direction),

@@ -10,7 +10,7 @@ class Student2 : public Student
     int size;
 public:
     Student2();
-    Student2(int age, char plec, string first_name, string surname, int size_human, int numer_ind,int semestr, string direction,string department, int size_student, string degree);
+    Student2(int age, char sex, string first_name, string surname, int size_human, int numer_ind,int semestr, string direction,string department, int size_student, string degree);
     Student2(string imie, string surname, int size_human, int numer_ind, int size_student, string degree,int size);
     ~Student2();
     

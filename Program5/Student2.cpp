@@ -6,8 +6,8 @@ Student2::Student2():Student()
     size=0;
     average=new double[size];
 }
-Student2::Student2(int age, char plec, string first_name, string surname, int size_human, int numer_ind,int semestr, string direction,string department, int size_student, string degree):
-    Student(age,plec,first_name,surname,size_human,numer_ind,semestr,direction,department,size_student),
+Student2::Student2(int age, char sex, string first_name, string surname, int size_human, int numer_ind,int semestr, string direction,string department, int size_student, string degree):
+    Student(age,sex,first_name,surname,size_human,numer_ind,semestr,direction,department,size_student),
     degree(degree), size(semestr-1)
 {
     average=new double[size];

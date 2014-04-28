@@ -9,7 +9,7 @@ class Tutor:public Human
     int number_of_publications;
 public:
     Tutor();
-    Tutor(int wiek, char plec, string imie, string surname, int size, string academic_title, int number_of_publications);
+    Tutor(int wiek, char sex, string imie, string surname, int size, string academic_title, int number_of_publications);
     Tutor(string imie, string surname, int size, string academic_title);
     ~Tutor();
         

@@ -14,7 +14,7 @@ class Student : public Human, public Interface
     int size;
 public:
     Student();
-    Student(int age, char plec, string first_name, string surname, int size_human, int numer_ind,int semestr, string direction,string department, int size);
+    Student(int age, char sex, string first_name, string surname, int size_human, int numer_ind,int semestr, string direction,string department, int size);
     Student(string first_name, string surname, int size, int numer_ind, int size);
     ~Student();
     

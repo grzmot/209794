@@ -5,8 +5,8 @@ Tutor::Tutor():Human()
     academic_title="";
     number_of_publications=0;
 }
-Tutor::Tutor(int age, char plec, string first_name, string surname, int size, string academic_title, int number_of_publications):
-    Human(age,plec,first_name,surname,size),
+Tutor::Tutor(int age, char sex, string first_name, string surname, int size, string academic_title, int number_of_publications):
+    Human(age,sex,first_name,surname,size),
     academic_title(academic_title),
     number_of_publications(number_of_publications)
 {}

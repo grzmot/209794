@@ -8,7 +8,7 @@ using namespace std;
 class Human : public Mama1
 {
     int age;
-    char plec;
+    char sex;
     string first_name;
     string surname;
     string *favorite_books;
@@ -16,7 +16,7 @@ class Human : public Mama1
     static int couter;
 public:
     Human();
-    Human(int age, char plec, string first_name, string surname, int size);
+    Human(int age, char sex, string first_name, string surname, int size);
     Human(string first_name, string surname,int size);
     virtual ~Human();
         
@@ -27,11 +27,11 @@ public:
     
     void pola();
     int get_age();
-    char get_plec();
+    char get_sex();
     string get_first_name();
     string get_surname();
     void set_age(int age);
-    void set_plec(char plec);
+    void set_sex(char sex);
     void set_first_name(string first_name);
     void set_surname(string surname);
     friend ostream& operator<< (ostream&,Human const&);

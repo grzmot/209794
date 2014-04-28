@@ -9,16 +9,16 @@ int Human::counter()
 Human::Human()
 {
     age=0;
-    plec='n';
+    sex='n';
     first_name="";
     surname="";
     couter++;
     size=0;
     favorite_books= new string[size];
 }
-Human::Human(int age, char plec, string first_name, string surname, int size):
+Human::Human(int age, char sex, string first_name, string surname, int size):
     age(age),
-    plec(plec),
+    sex(sex),
     first_name(first_name),
     surname(surname),
     size(size)
@@ -30,7 +30,7 @@ Human::Human(string first_name, string surname, int size):
     first_name(first_name),surname(surname),size(size)
 {
     age=0;
-    plec='n';
+    sex='n';
     couter++;
     favorite_books= new string[size];
 }
@@ -50,16 +50,16 @@ void Human::klasa()
 }
 void Human::pola()
 {
-    cout<<"Pola wlasne klasy Human:"<<endl<<" Imie,Nazwisko,Wiek,Plec,Ulubione ksiazki"<<endl;
+    cout<<"Pola wlasne klasy Human:"<<endl<<" Imie,Nazwisko,Wiek,sex,Ulubione ksiazki"<<endl;
 }
 
 int Human::get_age()
 {
     return age;
 }
-char Human::get_plec()
+char Human::get_sex()
 {
-    return plec;
+    return sex;
 }
 string Human::get_first_name()
 {
@@ -73,9 +73,9 @@ void Human::set_age(int age)
 {
     this->age=age;
 }
-void Human::set_plec(char plec)
+void Human::set_sex(char sex)
 {
-    this->plec=plec;
+    this->sex=sex;
 }
 void Human::set_first_name(string first_name)
 {
@@ -88,7 +88,7 @@ void Human::set_surname(string surname)
 
 ostream& operator<< (ostream &output, Human const& human)
 {
-   output << "Imie: " << human.first_name <<endl<< "Nazwisko: " << human.surname << endl<<"Wiek: "<< human.age<<endl<<"plec: "<<human.plec<<endl<<"ulubione ksiazki: ";
+   output << "Imie: " << human.first_name <<endl<< "Nazwisko: " << human.surname << endl<<"Wiek: "<< human.age<<endl<<"sex: "<<human.sex<<endl<<"ulubione ksiazki: ";
    for(int i=0;i<human.size;i++)
         output<<human.favorite_books[i]<<" ";
    return output;
@@ -101,8 +101,8 @@ istream& operator>> (istream &input, Human& human)
     input >> human.surname;
     cout<<"podaj Wiek:";
     input >> human.age;
-    cout<<"plec: ";
-    input>>human.plec;
+    cout<<"sex: ";
+    input>>human.sex;
     cout<<"podaj ilosc Ulubionych Ksiazek:";
    input >> human.size;
    delete []human.favorite_books;

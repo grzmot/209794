@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
     }
 
     
-    for (int i=0;i<Circle::ilosc();i++)
+    for (int i=0;i<Circle::number();i++)
     {
         cout<<"Obiekt "<<i+1<<endl;
         printf("Circle location is %.1fx%.1f\n",circle[i]->get_location().x, circle[i]->get_location().y);
@@ -26,11 +26,11 @@ int main(int argc, char *argv[])
         printf("Circle cirmference is %.2f\n",circle[i]->circumference());
         printf("Circle area is %.2f\n\n",circle[i]->area());
     }
-    printf("ilosc obiektow: %d\n",Circle::ilosc());
-    int l=Circle::ilosc();
+    printf("number obiektow: %d\n",Circle::number());
+    int l=Circle::number();
     for (int i=0;i<l;i++)
         delete circle[i];
-    printf("ilosc obiektow: %d\n",Circle::ilosc());
+    printf("number obiektow: %d\n",Circle::number());
          
     system("PAUSE");
 }

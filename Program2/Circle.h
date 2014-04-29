@@ -15,6 +15,8 @@ class Circle
     Circle (::location location,double radius);
     ~Circle();
     
+    static int number();
+    
     ::location get_location();
     double get_radius ();
     void set_location (::location location);
@@ -23,7 +25,5 @@ class Circle
     double area();
     Circle operator+(const Circle &c)const;
     Circle operator*(const double &s)const;
-
-    static int ilosc();
 };
 #endif

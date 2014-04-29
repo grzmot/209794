@@ -1,6 +1,6 @@
 #include "Circle.h"
 int Circle::n=0;
-int Circle::ilosc()
+int Circle::number()
 {
     return n;
 }

@@ -6,23 +6,24 @@ struct location{
 };
 class Circle
 {
-    location olocation;
+    ::location location;
     double radius;
     static int n;
+    
     public:
-        Circle();
-        Circle (location l,double r);
-        ~Circle();
-        location get_location();
-        double get_radius ();
-        void set_location (location w);
-        void set_radius (double r);
-        double circumference();
-        double area();
-        Circle operator+(const Circle & c)const;
-        Circle operator*(const double & s)const;
-        static void dilosc();
-        static void dilosc(int z);
-        static int ilosc();
+    Circle();
+    Circle (::location location,double radius);
+    ~Circle();
+    
+    ::location get_location();
+    double get_radius ();
+    void set_location (::location location);
+    void set_radius (double radius);
+    double circumference();
+    double area();
+    Circle operator+(const Circle &c);
+    Circle operator*(const double &s);
+
+    static int ilosc();
 };
 #endif

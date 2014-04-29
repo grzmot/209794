@@ -21,8 +21,8 @@ class Circle
     void set_radius (double radius);
     double circumference();
     double area();
-    Circle operator+(const Circle &c);
-    Circle operator*(const double &s);
+    Circle operator+(const Circle &c)const;
+    Circle operator*(const double &s)const;
 
     static int ilosc();
 };

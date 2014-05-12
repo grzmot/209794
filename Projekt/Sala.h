@@ -1,19 +1,31 @@
 #ifndef Sala_h
 #define Sala_h
-struct place
-{
-    int x;
-    int y;
-};
+
 class Sala
 {
-    ::place places;
-    int ilosc;
+	int row;
+	int space;
+	int number;
+	int number_of_seats;
+	bool **spaces;
+	static int number_of_hall;
+	
 public:
-    Sala();
-    Sala(::place place);
-    ~Sala();
-    void set_place(::place place);
-    int get_ilosc();
+	Sala();
+	Sala(int row, int space, int number);
+	Sala(const Sala &hall);
+	~Sala();
+	
+	static int get_number_of_hall();
+	
+	void set_number(int number);
+	void set_spaces(int row, int space);
+	int get_number();
+	int get_number_of_seats();
+	void view_spaces();
+	void take_seat(int row[], int space[],int number_seats);//zajmij miejsca
+	void relase_seat(int row[], int space[], int number_seats);//zwolnij miejsca
+	bool place_free(int row,int place);
+	
 };
 #endif

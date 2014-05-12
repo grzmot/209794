@@ -1,28 +1,29 @@
 #ifndef Film_h
 #define Film_h
-
 #include <string>
+using namespace std;
 
 class Film
 {
-    string titels;
-    int times;
-    char typ;
-    int age;
-    
+	string title;
+	int time;
+	int restrictions;
+	static int number_of_film;
 public:
-    Film();
-    Film(string titels,int time,char typ, int age);
-    virtual ~Film();
-    
-    void set_titels(string titels);
-    void set_time(int times);
-    void set_typ (char typ);
-    void set_age (int age);
-    string get_titels();
-    int get_time();
-    char get_typ();
-    int get_age();
-    
+	Film();
+	Film(string title,int time,int restrictions);
+	Film(const Film &film);
+	virtual ~Film();
+	
+	void set_title(string title);
+	void set_time(int time);
+	void set_restrictions(int restrictions);
+	
+	string get_title();
+	int get_time();
+	int get_restrictions();
+	friend istream& operator>> (istream&,Film&);
+	friend ostream& operator<< (ostream&,Film const&);
+	static int get_number_of_film();
 };
 #endif

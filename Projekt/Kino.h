@@ -20,6 +20,11 @@ class Kino
 	void resize_film();
 	void resize_seans();
 	void resize_reservation();
+	
+	bool check_relations_sala(int id_sala);
+	bool check_relations_film(int id_film);
+	bool check_relations_seans(int id_seans, int x);
+	
 public:
 	Kino();
 	~Kino();
@@ -36,7 +41,7 @@ public:
 	void view_ticket_price();
 	void buy_ticket(int number);
 	
-	
+	void g_ticket(double normal_2D, double normal_3D, double reduced_2D, double reduced_3D, double group_2D,double group_3D);
 	void g_sala(int row,int space,int id);
 	void g_film(string title,int time,int restrictions, int id);
 	void g_seans(::hour hour, string type_seans,int id,int id_film,int id_sala);
@@ -51,6 +56,12 @@ public:
 	void delete_sala(int id_sala);
 	void delete_film(int id_film);
 	void delete_seans(int id_seans);
+	void delete_seans2(int id_seans);
 	void delete_reservation(int id_reservation);
+	bool check_sala();
+	bool check_film();
+	bool check_seans();
+	bool check_reservation();
+	
 };
 #endif

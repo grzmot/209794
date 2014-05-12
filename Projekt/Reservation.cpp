@@ -1,6 +1,6 @@
 #include "Reservation.h"
 #include <iostream>
-
+int Reservation::number_of_reservation=0;
 Reservation::Reservation()
 {
 	row=NULL;
@@ -8,11 +8,13 @@ Reservation::Reservation()
 	seans_id=0;
 	reservation_number=0;
 	number=0;
+	number_of_reservation++;
 }
 Reservation::Reservation(int seans_id,int reservation_number,int number, int t_row[],int t_space[]):number(number),
 	seans_id(seans_id),
 	reservation_number(reservation_number)
 {
+	number_of_reservation++;
 	row =new int[number];
 	space=new int[number];
 	for(int i=0;i<number;i++)
@@ -23,6 +25,7 @@ Reservation::Reservation(int seans_id,int reservation_number,int number, int t_r
 }
 Reservation::~Reservation()
 {
+	number_of_reservation--;
 	if (row!=NULL)
 		delete []row;
 	if (space!=NULL)
@@ -59,4 +62,8 @@ int Reservation::get_row(int r)
 int Reservation::get_space(int s)
 {
 	return space[s];
+}
+int Reservation::get_number_of_reservation()
+{
+	return number_of_reservation;
 }

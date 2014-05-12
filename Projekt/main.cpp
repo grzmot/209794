@@ -16,8 +16,7 @@ int main(int argc, char *argv[])
 	kino->g_seans((::hour){17,20},"2D",0,0,0);
 	kino->g_seans((::hour){17,20},"3D",1,0,1);
 	kino->g_seans((::hour){13,20},"3D",2,1,0);
-	//kino->set_tickets();
-	do
+	kino->g_ticket(20,25,15,20,14,18);
 	{
 		int x;
 		system("cls");
@@ -55,15 +54,26 @@ int main(int argc, char *argv[])
 								kino->add_sala();
 								break;
 							case 2:
-								int z;
-								cout<<"wybierz sale do usuniecia"<<endl;
-								kino->view_sala();
-								cin>>z;
-								z--;
-								kino->delete_sala(z);
+								if(kino->check_sala())
+								{
+									int z;
+									cout<<"wybierz sale do usuniecia"<<endl;
+									kino->view_sala();
+									cin>>z;
+									z--;
+									kino->delete_sala(z);
+								}
+								else
+								{
+									cout<<"Brak Sal"<<endl<<endl<<endl;
+									system("PAUSE");
+								}
 								break;
 							case 3:
-								kino->view_sala();
+								if(kino->check_sala())
+									kino->view_sala();
+								else
+									cout<<"Brak Sal"<<endl;
 								cout<<endl<<endl;
 								system("PAUSE");
 								break;
@@ -98,15 +108,27 @@ int main(int argc, char *argv[])
 								kino->add_film();
 								break;
 							case 2:
-								int z;
-								cout<<"wybierz film do usuniecia"<<endl;
-								kino->view_film();
-								cin>>z;
-								z--;
-								kino->delete_film(z);
+								if(kino->check_film())
+								{
+									int z;
+									cout<<"wybierz film do usuniecia"<<endl;
+									kino->view_film();
+									cin>>z;
+									z--;
+									kino->delete_film(z);
+								}
+								else
+								{
+									cout<<"Brak Filmow"<<endl;
+									cout<<endl<<endl;
+									system("PAUSE");
+								}
 								break;
 							case 3:
-								kino->view_film();
+								if(kino->check_film())
+									kino->view_film();
+								else
+									cout<<"Brak filmow"<<endl;
 								cout<<endl<<endl;
 								system("PAUSE");
 								break;
@@ -142,25 +164,42 @@ int main(int argc, char *argv[])
 								kino->add_seans();
 								break;
 							case 2:
-								int z;
-								cout<<"wybierz seans do usuniecia"<<endl;
-								kino->view_seans();
-								cin>>z;
-								z--;
-								kino->delete_seans(z);
+								if(kino->check_seans())
+								{
+									int z;
+									cout<<"wybierz seans do usuniecia"<<endl;
+									kino->view_seans();
+									cin>>z;
+									z--;
+									kino->delete_seans(z);
+								}
+								else
+								{
+									cout<<"Brak Seansow"<<endl;
+									cout<<endl<<endl;
+									system("PAUSE");
+								}
 								break;
 							case 3:
-								kino->view_seans();
+								if(kino->check_seans())
+									kino->view_seans();
+								else
+									cout<<"Brak Seansow"<<endl;
 								cout<<endl<<endl;
 								system("PAUSE");
 								break;
 							case 4:
-								int zx;
-								cout<<"wybierz seans"<<endl;
-								kino->view_seans();
-								cin>>zx;
-								zx--;
-								kino->view_seans_sala(zx);
+								if(kino->check_seans())
+								{
+									int zx;
+									cout<<"wybierz seans"<<endl;
+									kino->view_seans();
+									cin>>zx;
+									zx--;
+									kino->view_seans_sala(zx);
+								}
+								else
+									cout<<"Brak Seansow"<<endl;
 								cout<<endl<<endl;
 								system("PAUSE");
 								break;
@@ -198,15 +237,27 @@ int main(int argc, char *argv[])
 								kino->add_reservation();
 								break;
 							case 2:
-								int z;
-								cout<<"wybierz rezerwacje do usuniecia"<<endl;
-								kino->view_reservation();
-								cin>>z;
-								z--;
-								kino->delete_reservation(z);
+								if(kino->check_reservation())
+								{
+									int z;
+									cout<<"wybierz rezerwacje do usuniecia"<<endl;
+									kino->view_reservation();
+									cin>>z;
+									z--;
+									kino->delete_reservation(z);
+								}
+								else
+								{
+									cout<<"Brak Rezerwacji"<<endl;
+									cout<<endl<<endl;
+									system("PAUSE");
+								}
 								break;
 							case 3:
-								kino->view_reservation();
+								if(kino->check_reservation())
+									kino->view_reservation();
+								else
+									cout<<"Brak Rezerwacji"<<endl;
 								cout<<endl<<endl;
 								system("PAUSE");
 								break;
@@ -223,7 +274,7 @@ int main(int argc, char *argv[])
 			case 6:
 				{
 					bool menu=true;
-					int y,y1;
+					int y,x;
 					do
 					{
 						system("cls");
@@ -232,9 +283,9 @@ int main(int argc, char *argv[])
 						cout<<"2. Kup Bilet"<<endl;
 						cout<<"0. Powrot"<<endl;
 						cout<<"9. WYJSCIE"<<endl<<endl;
-						cin>>y1;
+						cin>>x;
 						cout<<endl<<endl;
-						switch(y1)
+						switch(x)
 						{
 							case 1:
 								kino->view_ticket_price();
@@ -247,11 +298,13 @@ int main(int argc, char *argv[])
 								kino->buy_ticket(y);
 								break;
 							case 0:
-								menu=false;
+								menu=false;;
 								break;
 							case 9:
 								condition=false;
-							break;
+								break;
+							default:
+								break;
 						}
 					}while(menu && condition);
 				}

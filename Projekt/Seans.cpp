@@ -9,7 +9,7 @@ Seans::Seans():Film()
 	type_seans="";
 	sala=NULL;
 }
-Seans::Seans(string title,int time,int restrictions, ::hour hour,Sala sala,string type_seans):Film(title,time,restrictions),hour(hour), type_seans(type_seans)
+Seans::Seans(string title,int time,int restrictions,int id_film, ::hour hour,Sala sala,string type_seans):Film(title,time,restrictions,id_film),hour(hour), type_seans(type_seans)
 {
 	number_of_seans++;
 	this->sala=new Sala(sala);

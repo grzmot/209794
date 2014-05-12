@@ -8,21 +8,21 @@ Film::Film()
 	title="";
 	time=0;
 	restrictions=0;
+	id_film=0;
 }
-Film::Film(string title,int time,int restrictions):title(title),time(time),restrictions(restrictions)
+Film::Film(string title,int time,int restrictions,int id_film):title(title),time(time),restrictions(restrictions),id_film(id_film)
 {
 	number_of_film++;
 }
 Film::Film(const Film &film)
 {
-	number_of_film++;
 	title=film.title;
 	time=film.time;
 	restrictions=film.restrictions;
+	id_film=film.id_film;
 }
 Film::~Film()
 {
-	number_of_film--;
 }
 
 void Film::set_title(string title)
@@ -37,7 +37,10 @@ void Film::set_restrictions(int restrictions)
 {
 	this->restrictions=restrictions;
 }
-
+void Film::set_id_film(int id_film)
+{
+	this->id_film=id_film;
+}
 string Film::get_title()
 {
 	return title;
@@ -49,6 +52,10 @@ int Film::get_time()
 int Film::get_restrictions()
 {
 	return restrictions;
+}
+int Film::get_id_film()
+{
+	return id_film;
 }
 istream& operator>> (istream &input, Film& film)
 {
@@ -68,4 +75,8 @@ ostream& operator<< (ostream &output, Film const& film)
 int Film::get_number_of_film()
 {
 	return number_of_film;
+}
+void Film::set_number_of_film()
+{
+	number_of_film--;
 }

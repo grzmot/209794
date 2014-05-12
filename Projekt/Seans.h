@@ -17,7 +17,7 @@ class Seans : public Film
 	static int number_of_seans;
 public:
 	Seans();
-	Seans(string title,int time,int restrictions, ::hour hour,Sala sala,string type_seans);
+	Seans(string title,int time,int restrictions,int id_film, ::hour hour,Sala sala,string type_seans);
 	Seans(const Film &film,::hour hour,Sala sala, string type_seans);
 	~Seans();
 	

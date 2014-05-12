@@ -8,10 +8,13 @@ class Reservation
 	int *row;
 	int *space;
 	int number;
+	static int number_of_reservation;
 public:
 	Reservation();
 	Reservation(int seans_id,int reservation_number,int number, int t_row[],int t_space[]);
 	~Reservation();
+	
+	static int get_number_of_reservation();
 	
 	void set_seans_id(int seans_id);
 	int get_number();

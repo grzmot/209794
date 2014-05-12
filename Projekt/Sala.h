@@ -17,6 +17,7 @@ public:
 	~Sala();
 	
 	static int get_number_of_hall();
+	static void set_number_of_hall();
 	
 	void set_number(int number);
 	void set_spaces(int row, int space);

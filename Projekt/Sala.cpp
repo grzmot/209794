@@ -41,7 +41,6 @@ Sala::Sala(const Sala &hall)
 }
 Sala::~Sala()
 {
-	number_of_hall--;
 	for(int i=0;i<row;i++)
 		delete [] spaces[i];
 	delete [] spaces;
@@ -152,4 +151,8 @@ void Sala::relase_seat(int row[], int space[],int number_seats)//zwolnij miejsca
 bool Sala::place_free(int row_s,int place_s)
 {
 	return !(spaces[row_s][place_s]==true);
+}
+void Sala::set_number_of_hall()
+{
+	number_of_hall--;
 }

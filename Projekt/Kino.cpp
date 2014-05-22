@@ -448,10 +448,10 @@ void Kino::g_film(string title,int time,int restrictions,int id)
 	if(film[id]==NULL)
 		film[id]=new Film(title,time,restrictions,id);
 }
-void Kino::g_seans(::hour hour, string type_seans,int id,int id_film,int id_sala)
+void Kino::g_seans(::hour hour,::day day, string type_seans,int id,int id_film,int id_sala)
 {
 	if(seans[id]==NULL)
-		seans[id]=new Seans(*film[id_film],hour,*sala[id_sala],type_seans);
+		seans[id]=new Seans(*film[id_film],hour,day,*sala[id_sala],type_seans);
 }
 
 void Kino::add_sala()
@@ -516,6 +516,14 @@ void Kino::add_seans()
 		}while((i<size_seans)&& x);
 		if(x)
 			resize_seans();
+		int dd,dm,dy;
+		cout<<"podaj date:"<<endl;
+		cout<<"Dzien: ";
+		cin>>dd;
+		cout<<"Miesiac: ";
+		cin>>dm;
+		cout<<"Rok: ";
+		cin>>dy;
 		cout<<"wybierz film:"<<endl;
 		view_film();
 		cin>>f;
@@ -531,7 +539,7 @@ void Kino::add_seans()
 		scanf("%i:%i",&g,&m);
 		cout<<"podaj typ filmu(2D/3D): ";
 		cin>>t;
-		seans[i]=new Seans(*film[f],(::hour){g,m},*sala[s],t);
+		seans[i]=new Seans(*film[f],(::hour){g,m},(::day){dd,dm,dy},*sala[s],t);
 	}
 }
 void Kino::add_reservation()
@@ -658,4 +666,81 @@ bool Kino::check_seans()
 bool Kino::check_reservation()
 {
 	return reservation[0]->get_number_of_reservation()>0;
+}
+void Kino::save(ofstream &ofs)
+{
+	ofs.write((char*)(&size_sala), sizeof(int));
+	ofs.write((char*)(&size_film), sizeof(int));
+	ofs.write((char*)(&size_seans), sizeof(int));
+	ofs.write((char*)(&size_reservation), sizeof(int));
+	int sa,se,f,r;
+	sa=sala[0]->get_number_of_hall();
+	se=seans[0]->get_number_of_seans();
+	f=film[0]->get_number_of_film();
+	r=reservation[0]->get_number_of_reservation();
+	ofs.write((char*)(&sa), sizeof(int));
+	ofs.write((char*)(&f), sizeof(int));
+	ofs.write((char*)(&se), sizeof(int));
+	ofs.write((char*)(&r), sizeof(int));
+	ticket->save(ofs);
+	
+	for(int i=0;i<size_sala;i++)
+		if(sala[i]!=NULL)
+			sala[i]->save(ofs);
+	for(int i=0;i<size_film;i++)
+		if(film[i]!=NULL)
+			film[i]->save(ofs);
+	for(int i=0;i<size_seans;i++)
+		if(seans[i]!=NULL)
+			seans[i]->save(ofs);
+	for(int i=0;i<size_reservation;i++)
+		if(reservation[i]!=NULL)
+			reservation[i]->save(ofs);
+}
+void Kino::read(ifstream &ifs)
+{
+	int sa,se,f,r;
+	char* temp = new char[sizeof(int)];
+	ifs.read(temp, sizeof(int));
+	size_sala=*(int*)(temp);
+	ifs.read(temp, sizeof(int));
+	size_film=*(int*)(temp);
+	ifs.read(temp, sizeof(int));
+	size_seans=*(int*)(temp);
+	ifs.read(temp, sizeof(int));
+	size_reservation=*(int*)(temp);
+	ticket=new Ticket();
+	
+	ifs.read(temp, sizeof(int));
+	sa=*(int*)(temp);
+	ifs.read(temp, sizeof(int));
+	f=*(int*)(temp);
+	ifs.read(temp, sizeof(int));
+	se=*(int*)(temp);
+	ifs.read(temp, sizeof(int));
+	r=*(int*)(temp);
+	//cout<<endl<<size_sala<<endl;
+	//cout<<endl<<sa<<endl;
+	ticket->read(ifs);
+	for(int i=0;i<sa;i++)
+	{
+		sala[i]=new Sala();
+		sala[i]->read(ifs);
+	}
+	
+	for(int i=0;i<f;i++)
+	{
+		film[i]=new Film();
+		film[i]->read(ifs);
+	}
+	for(int i=0;i<se;i++)
+	{
+		seans[i]=new Seans();
+		seans[i]->read(ifs);
+	}
+	for(int i=0;i<r;i++)
+	{
+		reservation[i]= new Reservation();
+		reservation[i]->read(ifs);
+	}
 }

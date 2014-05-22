@@ -59,17 +59,18 @@ int Film::get_id_film()
 }
 istream& operator>> (istream &input, Film& film)
 {
+	fflush( stdin );
 	cout<<"Podaj tylul filmu:   ";
-	input>>film.title;
+	getline(cin,film.title);
 	cout<<endl<<"Podaj dlugosc filmu [min]:   ";
 	input>>film.time;
-	cout<<"Podaj ograniczenia wiekowe (do lat):   ";
+	cout<<"Podaj ograniczenia wiekowe (od lat):   ";
 	input>>film.restrictions;
 	return input;
 }
 ostream& operator<< (ostream &output, Film const& film)
 {
-	output<<film.title<<"  "<<"dlugosc: "<<film.time<<" min  "<<"ograniczenia wiekowe: +"<<film.restrictions;
+	output<<film.title<<"  "<<film.time<<" min  "<< "+"<<film.restrictions;
 	return output;
 }
 int Film::get_number_of_film()
@@ -79,4 +80,40 @@ int Film::get_number_of_film()
 void Film::set_number_of_film()
 {
 	number_of_film--;
+}
+void Film::save(ofstream &ofs)
+{
+	int x=title.length();
+	char *c;
+	c= new char[x];
+	for(int i=0;i<x;i++)
+		c[i]=title[i];
+	ofs.write((char*)(&x), sizeof(int));
+	ofs.write((char*)(c), x);
+	ofs.write((char*)(&time), sizeof(int));
+	ofs.write((char*)(&restrictions), sizeof(int));
+	ofs.write((char*)(&id_film), sizeof(int));
+}
+void Film::read(ifstream &ifs)
+{
+	int x;
+	char* temp = new char[sizeof(int)];
+	ifs.read(temp, sizeof(int));
+	x=*(int*)(temp);
+	delete temp;
+	temp = new char[x];
+	ifs.read(temp, x);
+	for(int i=0;i<x;i++)
+	{
+		title=title+(temp[i]);
+	}
+	delete temp;
+	temp=new char[sizeof(int)];
+	ifs.read(temp, sizeof(int));
+	time=*(int*)(temp);
+	ifs.read(temp, sizeof(int));
+	restrictions=*(int*)(temp);
+	ifs.read(temp, sizeof(int));
+	id_film=*(int*)(temp);
+	delete temp;
 }

@@ -1,6 +1,7 @@
 #ifndef Film_h
 #define Film_h
 #include <string>
+#include <fstream>
 using namespace std;
 
 class Film
@@ -30,5 +31,7 @@ public:
 	int get_id_film();
 	friend istream& operator>> (istream&,Film&);
 	friend ostream& operator<< (ostream&,Film const&);
+	void save(ofstream &ofs);
+	void read(ifstream &ifs);
 };
 #endif

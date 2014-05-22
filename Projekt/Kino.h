@@ -5,6 +5,8 @@
 #include "Seans.h"
 #include "Reservation.h"
 #include "Ticket.h"
+#include <fstream>
+using namespace std;
 class Kino
 {
 	Sala **sala;
@@ -16,6 +18,7 @@ class Kino
 	int size_film;
 	int size_seans;
 	int size_reservation;
+	
 	void resize_sala();
 	void resize_film();
 	void resize_seans();
@@ -44,7 +47,7 @@ public:
 	void g_ticket(double normal_2D, double normal_3D, double reduced_2D, double reduced_3D, double group_2D,double group_3D);
 	void g_sala(int row,int space,int id);
 	void g_film(string title,int time,int restrictions, int id);
-	void g_seans(::hour hour, string type_seans,int id,int id_film,int id_sala);
+	void g_seans(::hour hour,::day day, string type_seans,int id,int id_film,int id_sala);
 	
 	
 	void add_sala();
@@ -63,5 +66,7 @@ public:
 	bool check_seans();
 	bool check_reservation();
 	
+	void save(ofstream &ofs);
+	void read(ifstream &ifs);
 };
 #endif

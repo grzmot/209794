@@ -67,3 +67,32 @@ int Reservation::get_number_of_reservation()
 {
 	return number_of_reservation;
 }
+void Reservation::save(ofstream &ofs)
+{
+	ofs.write((char*)(&reservation_number), sizeof(int));
+	ofs.write((char*)(&seans_id), sizeof(int));
+	ofs.write((char*)(&number), sizeof(int));
+	for(int i=0;i<number;i++)
+	{
+		ofs.write((char*)(&row[i]), sizeof(int));
+		ofs.write((char*)(&space[i]), sizeof(int));
+	}
+}
+void Reservation::read(ifstream &ifs)
+{
+	char* temp=new char[sizeof(int)];
+	ifs.read(temp, sizeof(int));
+	reservation_number=*(int*)(temp);
+	ifs.read(temp, sizeof(int));
+	seans_id=*(int*)(temp);
+	ifs.read(temp, sizeof(int));
+	number=*(int*)(temp);
+	for(int i=0;i<number;i++)
+	{
+		ifs.read(temp, sizeof(int));
+		row[i]=*(int*)(temp);
+		ifs.read(temp, sizeof(int));
+		space[i]=*(int*)(temp);
+	}
+	delete temp;
+}

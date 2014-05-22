@@ -1,6 +1,7 @@
 #ifndef Ticket_h
 #define Ticket_h
 #include <iostream>
+#include <fstream>
 using namespace std;
 class Ticket
 {
@@ -24,5 +25,7 @@ public:
 	double get_group_3D();
 	friend istream& operator>> (istream&,Ticket&);
 	friend ostream& operator<< (ostream&,Ticket const&);
+	void save(ofstream &ofs);
+	void read(ifstream &ifs);
 };
 #endif

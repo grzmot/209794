@@ -1,13 +1,15 @@
 #ifndef Sala_h
 #define Sala_h
-
+#include <iostream>
+#include <fstream>
+using namespace std;
 class Sala
 {
 	int row;
 	int space;
 	int number;
 	int number_of_seats;
-	bool **spaces;
+	int **spaces;
 	static int number_of_hall;
 	
 public:
@@ -27,6 +29,8 @@ public:
 	void take_seat(int row[], int space[],int number_seats);//zajmij miejsca
 	void relase_seat(int row[], int space[], int number_seats);//zwolnij miejsca
 	bool place_free(int row,int place);
-	
+	void save(ofstream &ofs);
+	void savex(fstream &ofs);
+	void read(ifstream &ifs);
 };
 #endif

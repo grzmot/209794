@@ -107,3 +107,29 @@ ostream& operator<< (ostream &output, Ticket const& ticketes)
 	output<<left<<ticketes.ticket[0][2]<<"zl  "<<left<<ticketes.ticket[1][2]<<"zl"<<endl<<endl;
 	return output;
 }
+void Ticket::save(ofstream &ofs)
+{
+	ofs.write((char*)(&ticket[0][0]), sizeof(double));
+	ofs.write((char*)(&ticket[0][1]), sizeof(double));
+	ofs.write((char*)(&ticket[0][2]), sizeof(double));
+	ofs.write((char*)(&ticket[1][0]), sizeof(double));
+	ofs.write((char*)(&ticket[1][1]), sizeof(double));
+	ofs.write((char*)(&ticket[1][2]), sizeof(double));
+}
+void Ticket::read(ifstream &ifs)
+{
+	char* temp = new char[sizeof(double)];
+	ifs.read(temp, sizeof(double));
+	ticket[0][0]=*(double*)(temp);
+	ifs.read(temp, sizeof(double));
+	ticket[0][1]=*(double*)(temp);
+	ifs.read(temp, sizeof(double));
+	ticket[0][2]=*(double*)(temp);
+	ifs.read(temp, sizeof(double));
+	ticket[1][0]=*(double*)(temp);
+	ifs.read(temp, sizeof(double));
+	ticket[1][1]=*(double*)(temp);
+	ifs.read(temp, sizeof(double));
+	ticket[1][2]=*(double*)(temp);
+	delete temp;
+}

@@ -1,7 +1,7 @@
 #include <cstdlib>
 #include <iostream>
 #include "Kino.h"
-
+#include <fstream>
 using namespace std;
 
 int main(int argc, char *argv[])
@@ -9,15 +9,25 @@ int main(int argc, char *argv[])
 	Kino *kino;
 	bool condition=true;
 	kino= new Kino();
-	kino->g_sala(20,18,0);
-	kino->g_sala(18,16,1);
-	kino->g_film("AUTA 2",120,3,0);
-	kino->g_film("Wiedzmin",160,12,1);
-	kino->g_seans((::hour){17,20},"2D",0,0,0);
-	kino->g_seans((::hour){17,20},"3D",1,0,1);
-	kino->g_seans((::hour){13,20},"3D",2,1,0);
-	kino->g_ticket(20,25,15,20,14,18);
+	ifstream plik2("..\\..\\plik.bin", ios::binary);
+	if (plik2)
 	{
+		kino->read(plik2);
+		plik2.close();
+	}
+	//system("pause");
+	else
+	{
+		kino->g_sala(20,18,0);
+		kino->g_sala(18,16,1);
+		kino->g_film("AUTA 2",120,3,0);
+		kino->g_film("Wiedzmin",160,12,1);
+		kino->g_seans((::hour){17,20},(::day){12,05,2014},"2D",0,0,0);
+		kino->g_seans((::hour){17,20},(::day){12,05,2014},"3D",1,0,1);
+		kino->g_seans((::hour){13,20},(::day){12,05,2014},"3D",2,1,0);
+		kino->g_ticket(20,25,15,20,14,18);
+	}
+	do {
 		int x;
 		system("cls");
 		cout<<endl<<endl;
@@ -314,5 +324,10 @@ int main(int argc, char *argv[])
 				break;
 		}
 	}while(condition);
+	ofstream plik("..\\..\\plik.bin", ios::binary);
+	{
+		kino->save(plik);
+		plik.close();
+	}
 	delete kino;
 }

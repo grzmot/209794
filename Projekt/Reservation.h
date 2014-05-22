@@ -1,6 +1,7 @@
 #ifndef Reservation_h
 #define Reservation_h
-
+#include <fstream>
+using namespace std;
 class Reservation
 {
 	int reservation_number;
@@ -24,5 +25,7 @@ public:
 	int* get_space();
 	int get_row(int r);
 	int get_space(int s);
+	void save(ofstream &ofs);
+	void read(ifstream &ifs);
 };
 #endif
